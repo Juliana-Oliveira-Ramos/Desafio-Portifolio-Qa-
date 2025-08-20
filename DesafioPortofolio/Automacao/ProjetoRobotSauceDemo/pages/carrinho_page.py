@@ -14,4 +14,5 @@ class CarrinhoPage():
 
     def clicar_continuar_comprando(self):
         self.clicar(self.botao_continuar_comprando)
-        
+
+    def         

@@ -10,4 +10,18 @@ class TestRPC:
         driver.find_element(By.ID, "login-button").click()
 
         #clicar no produto (mochila) no carrinho
-        driver.find_element(By.XPATH, "//*[@class='inventory_item_name ' and text()='Sauce Labs Backpack']")
+        driver.find_element(By.XPATH, "//*[@class='inventory_item_name ' and text()='Sauce Labs Backpack']").click()
+        driver.find_element(By.XPATH, "//*[text()='Add to cart']").click()
+
+        #verificar se o produto foi adicionado
+        driver.find_element(By.XPATH, "//*[@class='shopping_cart_link']").click()
+        assert driver.find_element(By.XPATH, "//*[@class='inventory_item_name' and text()='Sauce Labs Backpack']").is_displayed()
+
+        #remover o produto do carrinho
+        driver.find_element(By.XPATH, "//*[@class='inventory_item_name ' and text()='Sauce Labs Backpack']").click()
+        driver.find_element(By.XPATH,"//*[text()='REMOVE']").click()
+        
+        #verificar se o produto foi removido do carrinho
+        driver.find_element(By.XPATH, "//*[@class='shopping_cart_link']").click()
+        assert driver.find_element(By.XPATH, "//*[@class='inventory_item_name' and text()='Sauce Labs Backpack']").is_displayed()
+       
