@@ -3,14 +3,15 @@ import conftest
 from selenium.webdriver.common.by import By
 
 class HomePage(BasePage):
-    def __init__(self) -> None:
-        self.driver = conftest.driver
+    def __init__(self,driver):
+        super().__init__(driver)
+        #self.driver = conftest.driver
 
         self.titulo_pagina = (By.XPATH, "//span[@class='title']")
 
         self.item_iventario = (By.XPATH, "//*[@class='inventory_item_name ' and text()='{}'] ")
         self.botao_adicionar_carrinho = (By.XPATH, "//*[@text='Add to cart']")
-        self.icone_carringho(By.XPATH, "//*[@class='shopping_cart_link']")
+        self.icone_carrinho = (By.XPATH, "//*[@class='shopping_cart_link']")
 
     
     def verificar_login_com_sucesso(self):

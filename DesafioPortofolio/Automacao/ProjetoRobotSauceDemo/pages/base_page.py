@@ -5,8 +5,8 @@ from selenium.webdriver import ActionChains, Keys
 
 
 class BasePage:
-    def __init__(self)-> None:
-        self.driver = conftest.driver
+    def __init__(self,driver):
+        self.driver = driver
 
     def encontrar_elemento(self, locator):
         return self.driver.find_element(*locator)
@@ -18,7 +18,7 @@ class BasePage:
         self.encontrar_elemento(locator).send_keys(text)
 
     def clicar(self,locator):
-        self.encontrar_elemento(locator).send_keys(locator).click()
+        self.encontrar_elemento(locator).click()
 
     def verificar_se_elemento_existe(self, locator):
         assert self.encontrar_elemento(locator).is_displayed(), f'O elemento' '{locator}' 'nao foi encontrado'
